@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ai-chatbot-platform-free.bongshai.com/sitemap.xml

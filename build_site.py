@@ -7,7 +7,7 @@ from datetime import datetime
 # Configuration
 SITE_URL = "https://ai-chatbot-platform-free.bongshai.com"
 SITE_NAME = "AI Chatbot Platform Reviews"
-OUTPUT_DIR = "public"
+OUTPUT_DIR = "."
 AUTHOR_NAME = "Alex Techwriter"
 AUTHOR_BIO = "Alex is an experienced AI researcher and SaaS analyst with over 10 years of experience in conversational AI."
 YEAR = datetime.now().year
@@ -47,12 +47,9 @@ ARTICLES = [
 ]
 
 # Ensure Output Dir
-if os.path.exists(OUTPUT_DIR):
-    shutil.rmtree(OUTPUT_DIR)
-os.makedirs(OUTPUT_DIR)
-os.makedirs(os.path.join(OUTPUT_DIR, "assets"))
-os.makedirs(os.path.join(OUTPUT_DIR, "images"))
-os.makedirs(os.path.join(OUTPUT_DIR, "category"))
+os.makedirs(os.path.join(OUTPUT_DIR, "assets"), exist_ok=True)
+os.makedirs(os.path.join(OUTPUT_DIR, "images"), exist_ok=True)
+os.makedirs(os.path.join(OUTPUT_DIR, "category"), exist_ok=True)
 
 # Copy Assets
 shutil.copy("src_assets/style.css", os.path.join(OUTPUT_DIR, "assets", "style.css"))

@@ -103,7 +103,10 @@ HTML_BASE = """<!DOCTYPE html>
 <body>
     <header class="glassmorphism">
         <div class="container nav-container">
-            <a href="/" class="logo">{site_name}</a>
+            <a href="/" class="logo" style="display: flex; align-items: center;">
+                <img src="/images/logo.png" alt="{site_name} AI Chatbot Reviews Logo" style="height: 32px; margin-right: 10px;">
+                {site_name}
+            </a>
             <nav id="mobile-menu" class="nav-links">
                 <a href="/">Home</a>
                 <a href="/category/comparisons.html">Comparisons</a>
@@ -231,6 +234,18 @@ for article in ARTICLES:
     })
     schema += faq_schema
 
+    meta_descriptions = [
+        f"Looking for the best {article['keyword']}? Read our comprehensive review comparing features, pricing, and pros & cons for {article['category'].lower()} tasks.",
+        f"Unbiased review of {article['keyword']}. Is it worth it? We break down the hidden costs and best features so you can make the right choice.",
+        f"Compare {article['keyword']} side-by-side. Our expert analysis covers pricing, accuracy, and use cases for {article['category'].lower()}."
+    ]
+    meta_desc = random.choice(meta_descriptions)
+    
+    related_article = random.choice(ARTICLES)
+    while related_article['slug'] == article['slug']:
+        related_article = random.choice(ARTICLES)
+    internal_link_html = f'<p><em>For related insights, you might also want to read our analysis on <a href="/{related_article["slug"]}.html">{related_article["title"]}</a>.</em></p>'
+
     content = f"""
     <article class="post">
         <!-- Breadcrumbs -->
@@ -279,7 +294,7 @@ for article in ARTICLES:
 
         <h2 id="overview">Overview of {article['keyword']}</h2>
         <p>The AI landscape is evolving rapidly. To understand which platform suits you best, we must first look at the foundational models powering these tools. Modern language models are trained on vast datasets, but how they are fine-tuned makes all the difference in user experience.</p>
-        <p>When considering <strong>{article['keyword']}</strong>, users often overlook the importance of UI/UX, plugin ecosystems, and data privacy policies. We've taken all of these into account.</p>
+        <p>When considering <strong>{article['keyword']}</strong>, users often overlook the importance of UI/UX, plugin ecosystems, and data privacy policies. We've taken all of these into account.</p>\n        {internal_link_html}
 
         <!-- Newsletter Inline -->
         <div class="newsletter-inline glassmorphism">
@@ -358,7 +373,7 @@ for article in ARTICLES:
     
     html = HTML_BASE.format(
         title=f"{article['title']} - {SITE_NAME}",
-        description=f"Read our comprehensive comparison of {article['keyword']}. Find out which AI chatbot platform is right for you.",
+        description=meta_desc,
         url=f"{SITE_URL}/{article['slug']}.html",
         schema=schema,
         site_name=SITE_NAME,

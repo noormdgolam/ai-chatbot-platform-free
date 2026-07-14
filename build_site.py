@@ -46,6 +46,36 @@ ARTICLES = [
     {"slug": "future-of-free-ai-chatbots", "title": "The Future of Free AI Chatbots: What to Expect in 2026", "category": "News", "keyword": "future of free AI chatbots"}
 ]
 
+niches = [
+    "Realtors", "Teachers", "Accountants", "Lawyers", "Doctors", "Nurses", "Dentists", "Plumbers", "Electricians", "Mechanics",
+    "Carpenters", "Painters", "Chefs", "Bartenders", "Waiters", "Retail Workers", "Cashiers", "Customer Service Reps", "Salespeople",
+    "Marketers", "Advertisers", "Copywriters", "Graphic Designers", "Web Developers", "Software Engineers", "Data Scientists",
+    "Product Managers", "Project Managers", "HR Professionals", "Recruiters", "Event Planners", "Photographers", "Videographers",
+    "Musicians", "Actors", "Writers", "Authors", "Journalists", "Bloggers", "Podcasters", "YouTubers", "Streamers", "Influencers",
+    "Fitness Trainers", "Yoga Instructors", "Nutritionists", "Dietitians", "Therapists", "Counselors", "Social Workers", "Psychologists",
+    "Psychiatrists", "Veterinarians", "Pet Groomers", "Dog Trainers", "Farmers", "Ranchers", "Landscapers", "Gardeners", "Florists",
+    "Interior Designers", "Architects", "Engineers", "Scientists", "Researchers", "Professors", "Librarians", "Museum Curators",
+    "Tour Guides", "Travel Agents", "Flight Attendants", "Pilots", "Air Traffic Controllers", "Train Conductors", "Bus Drivers",
+    "Truck Drivers", "Delivery Drivers", "Uber Drivers", "Taxi Drivers", "Chauffeurs", "Security Guards", "Police Officers",
+    "Firefighters", "Paramedics", "EMTs", "Military Personnel", "Politicians", "Diplomats", "Judges", "Law Clerks", "Paralegals",
+    "Legal Assistants", "Court Reporters", "Translators", "Interpreters", "Linguists", "Historians", "Archaeologists", "Anthropologists",
+    "Sociologists", "Economists", "Statisticians", "Mathematicians", "Physicists", "Chemists", "Biologists", "Geologists",
+    "Astronomers", "Meteorologists", "Oceanographers", "Environmental Scientists", "Conservationists", "Park Rangers", "Zookeepers",
+    "Marine Biologists", "Botanists", "Zoologists", "Ecologists", "Geneticists", "Microbiologists", "Virologists", "Immunologists",
+    "Pharmacists", "Pharmacologists", "Toxicologists", "Epidemiologists", "Public Health Experts", "Health Educators", "Dietitians",
+    "Nutritionists", "Fitness Instructors", "Personal Trainers", "Coaches", "Referees", "Umpires", "Athletes", "Sports Managers"
+]
+
+for n in niches:
+    s_slug = n.lower().replace(" ", "-")
+    ARTICLES.append({
+        "slug": f"best-ai-chatbots-{s_slug}",
+        "title": f"The Best AI Chatbots for {n} in 2026",
+        "category": "Niche",
+        "keyword": f"AI chatbots for {n}"
+    })
+
+
 # Ensure Output Dir
 os.makedirs(os.path.join(OUTPUT_DIR, "assets"), exist_ok=True)
 os.makedirs(os.path.join(OUTPUT_DIR, "images"), exist_ok=True)
